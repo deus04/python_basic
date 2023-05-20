@@ -6,7 +6,7 @@ for i in range(quantity):
     old_videocards_list.append(int(input()))
 
 maximum = 0
-for i in range(quantity):  # TODO вместо цикла можно использовать функцию max
+for i in range(quantity):
     if maximum < old_videocards_list[i]:
         maximum = old_videocards_list[i]
 
