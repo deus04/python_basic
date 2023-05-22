@@ -1,3 +1,9 @@
+def search_time():
+    for i in range(len_list):
+        if violator_songs[i][0] == title:
+            return violator_songs[i][1]
+
+
 violator_songs = [
     ['World in My Eyes', 4.86],
     ['Sweetest Perfection', 4.43],
@@ -10,4 +16,13 @@ violator_songs = [
     ['Clean', 5.83]
 ]
 
-# TODO здесь писать код
+how_sounds = int(input('Сколько песен выбрать? '))
+len_list = len(violator_songs)
+total_time = 0
+
+for i in range(how_sounds):
+    print('Название ', i + 1, '-й песни: ', sep='', end='')
+    title = str(input(''))
+    total_time += search_time()
+
+print('Общее время звучания песен:', round(total_time, 2), 'минуты')
