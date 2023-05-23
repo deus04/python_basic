@@ -1,8 +1,7 @@
-def search_time():
-    for i in range(len_list):  # TODO Аналогично предыдущему
-        if violator_songs[i][0] == title:  # TODO передавайте значение глобальной переменной title через параметр
-                                           #  функции, это считается хорошей практикой
-            return violator_songs[i][1]
+def search_time(title):
+    for track in violator_songs:
+        if track[0] == title:
+            return track[1]
 
 
 violator_songs = [
@@ -24,6 +23,6 @@ total_time = 0
 for i in range(how_sounds):
     print('Название ', i + 1, '-й песни: ', sep='', end='')
     title = str(input(''))
-    total_time += search_time()
+    total_time += search_time(title)
 
 print('Общее время звучания песен:', round(total_time, 2), 'минуты')
