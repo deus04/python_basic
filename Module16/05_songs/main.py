@@ -1,6 +1,7 @@
 def search_time():
-    for i in range(len_list):
-        if violator_songs[i][0] == title:
+    for i in range(len_list):  # TODO Аналогично предыдущему
+        if violator_songs[i][0] == title:  # TODO передавайте значение глобальной переменной title через параметр
+                                           #  функции, это считается хорошей практикой
             return violator_songs[i][1]
 
 

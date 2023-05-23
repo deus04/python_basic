@@ -18,7 +18,6 @@ def came_or_gone():
         came_or_gone()
 
 
-
 guests = ['Петя', 'Ваня', 'Саша', 'Лиза', 'Катя']
 
 came_or_gone()

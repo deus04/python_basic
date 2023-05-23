@@ -7,6 +7,7 @@ count = 0
 price = 0
 
 for i in range(len(shop)):
+    # TODO итерируйте непосредственно по списку, это упростит дальнейшую индексацию
     if shop[i][0] == search:
         count += 1
         price += shop[i][1]
