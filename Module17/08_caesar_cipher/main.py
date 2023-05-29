@@ -4,7 +4,7 @@ def cipher(message, shift):
     answer = ''
     for i_word in new_message:
         answer += i_word
-    return answer
+    return answer  # TODO Определение функции должно отделяться от остального кода двумя пустыми строками
 
 alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 message = str(input('Введите сообщение: '))
