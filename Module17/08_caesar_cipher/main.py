@@ -1,10 +1,10 @@
-
 def cipher(message, shift):
-    new_message = [(alphabet[(alphabet.index(sym) + shift) % 33] if sym != ' ' else ' ')for sym in message]
+    new_message = [(alphabet[(alphabet.index(sym) + shift) % 33] if sym != ' ' else ' ') for sym in message]
     answer = ''
     for i_word in new_message:
         answer += i_word
-    return answer  # TODO Определение функции должно отделяться от остального кода двумя пустыми строками
+    return answer
+
 
 alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 message = str(input('Введите сообщение: '))
