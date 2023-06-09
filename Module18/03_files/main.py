@@ -1,11 +1,15 @@
 file_name = input('Название файла: ')
-special_symbols = list('@№$%^&\*()')
+special_symbols = list('@№$%^&\*()')  # TODO достаточно строки, она ведёт себя как список
 
 for symbol in special_symbols:
     if file_name.startswith(symbol):
+    # TODO Проще проверить вхождение первой буквы имени файла (брать индексацией) в строку запрещенных символов
+    #  (оператор in), и тогда цикл не понадобится
         print('Ошибка: название начинается на один из специальных символов.')
         break
     elif not file_name.endswith('.txt' or '.docx'):
+        # TODO это ошибка, сейчас проверяется только txt файлы, а docx нет, укажите кортех вариантов:
+        #  elif not file_name.endswith(('.txt', '.docx')):
         print('Ошибка: неверное расширение файла. Ожидалось .txt или .docx.')
         break
     else:
