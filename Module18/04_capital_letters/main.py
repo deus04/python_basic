@@ -9,6 +9,3 @@ for word in split_string:
     joined_word_list.append(joined_words)
 result = ' '.join(joined_word_list)
 print('Результат:', result)
-
-# мне не понравилось :(
-# TODO есть метод capitalize() - он увеличивает первую букву строки, а есть title() он выполняет сразу всю работу сразу
