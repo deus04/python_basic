@@ -24,4 +24,13 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+print(list(goods))
+
+for i_goods in goods:
+    print(i_goods, '-', end=' ')
+    quantity_sum = 0
+    price_sum = 0
+    for goods_value in store[goods[i_goods]]:
+        quantity_sum += goods_value['quantity']
+        price_sum += goods_value['price'] * goods_value['quantity']
+    print(quantity_sum, 'штук, стоимость {:,d} рублей'.format(price_sum)) # не помню как разделить на триады через пробел

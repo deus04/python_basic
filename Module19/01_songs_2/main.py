@@ -10,4 +10,19 @@ violator_songs = {
     'Clean': 5.83
 }
 
-# TODO здесь писать код
+sound_numbers = ["первой",
+                 "второй",
+                 "третьей",
+                 "четвертой",
+                 "пятой",
+                 "шестой",
+                 "седьмой",
+                 "восьмой",
+                 "девятой"]
+
+total_len = 0
+total_sounds = int(input('Сколько песен выбрать? '))
+for i_sound in sound_numbers[:total_sounds]:
+    print("Название", i_sound, "песни: ", end='')
+    total_len += violator_songs[str(input())]
+print('Общее время звучания песен: {:.2f} минуты'.format(total_len))

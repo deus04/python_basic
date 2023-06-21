@@ -45,4 +45,14 @@ data = {
 }
 
 
-# TODO здесь писать код
+print(data.keys())
+print(data.values()) # 1й пункт задачи непонимаю
+
+data['ETH']['total_diff'] = 100 # 2й пункт
+data['tokens'][0]['fst_token_info']['name'] = 'doge' # 3й пункт
+print('----------------------------')
+
+data['ETH']['totalOut'] = data['tokens'][0].pop('total_out') # 4й пункт
+data['ETH']['totalOut'] += data['tokens'][1].pop('total_out')
+
+data['tokens'][1]["sec_token_info"]['total_price'] = data['tokens'][1]["sec_token_info"].pop('price') # 5й пункт
