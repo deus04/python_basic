@@ -1,9 +1,7 @@
 def deep_count(num):
-    if num <= 1:
-        print(num)  # TODO эта строка может выполняться безусловно, вынесите её из if
-    else:
+    if num > 1:
         deep_count(num - 1)
-        print(num)
+    print(num)
 
 
 num = int(input("Введите num: "))
