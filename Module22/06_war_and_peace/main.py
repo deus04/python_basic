@@ -3,9 +3,17 @@ from operator import itemgetter
 
 # file_zip = zipfile.ZipFile('voyna-i-mir.zip', 'r')
 # file_data = file_zip.read('voyna-i-mir.txt')
-# TODO так и не понял как брать файл из архива.
+#  так и не понял как брать файл из архива.
 #  В результате выдает кучку чисел, возможно дело в кодировке
-
+# TODO Да, декодировать надо, лучше в utf-8.
+#  Покажу чтение файла без разархивации
+# import zipfile
+#
+# with zipfile.ZipFile('voyna-i-mir.zip', "r") as archive:
+#     for i_file_name in archive.namelist():
+#         if i_file_name:
+#             with archive.open(i_file_name, "r") as file:
+#                 print(file.read().decode('utf8'))
 
 file = open('voyna-i-mir.txt', 'r', encoding='utf-8')
 file_data = file.read()
