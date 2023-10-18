@@ -2,24 +2,27 @@ import os
 
 def count_and_getsize(any_path, count_dirs, count_files, total_size):
     for i_elem in os.listdir(any_path):
-        i_elem = os.path.join(any_path, i_elem) #  мне не нравится это переприсваивание. Это верно?
-        # TODO Изменять переменную цикла очень не желательно, это сбивает с толку читающего код. Введите доп.переменную,
-        #  назовите её, например, "полный_путь"
-        print(i_elem)
-        if os.path.isdir(i_elem):
+        full_path = os.path.join(any_path, i_elem)
+        print(full_path)
+        if os.path.isdir(full_path):
             count_dirs += 1
-            count_and_getsize(i_elem, count_dirs, count_files, total_size)
-        elif os.path.isfile(i_elem):
+            count_and_getsize(full_path, count_dirs, count_files, total_size)
+        elif os.path.isfile(full_path):
             count_files += 1
-            total_size += os.path.getsize(i_elem)
+            total_size += os.path.getsize(full_path)
 
     return count_dirs, count_files, total_size
 
 
-# any_path = os.path.abspath(os.path.join('..','..')) #  с Этим путем не работает
-# TODO отлично работает, нужны подробности что у вас именно не работает, какую ошибку вызывает? Отличие от предыдущего
+any_path = os.path.abspath(os.path.join('..','..')) #  с Этим путем не работает
+# отлично работает, нужны подробности что у вас именно не работает, какую ошибку вызывает? Отличие от предыдущего
 #  только в том, что вариант выше берет на одну папку "выше"
-any_path = os.path.abspath('..')                    #  а с этим работает. Почему?
+# TODO он не считает вложенные файлы и общий размер не совпадает. Всего 1 файл, хотя там весь курс.
+# Результат:
+# Размер каталога (в Кб): 10.5283203125
+# Количество подкаталогов: 11
+# Количество файлов: 1
+#any_path = os.path.abspath('..')                    #  а с этим работает. Почему?
 print(any_path)
 count_dirs = 0
 count_files = 0
