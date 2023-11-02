@@ -21,6 +21,10 @@ with open('people.txt', 'r', encoding='utf-8') as textfile:
             total_simbols += count_simbols
             if count_simbols < 3:
                 raise BaseException
+                # TODO используйте более конкретный класс исключения, например ValueError.
+                #  В любом случае, базовый класс всех простых исключений это Exception, а BaseException это "внутренности"
+                #  реализации и обычно не используется
+
         except BaseException:
             print(f'Ошибка! В строке {number_str} меньше 3х символов!')
 print('Общее количество символов:', total_simbols)
