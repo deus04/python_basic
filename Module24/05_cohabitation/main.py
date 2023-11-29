@@ -15,8 +15,10 @@ class Human:
                 ))
 
     def eating(self):
-        self.hunger += 1
+        self.hunger += 1  # TODO голод увеличился от еды? Назовите атрибут словом "сытость"
         Home.fridge -= 1
+        # TODO Что если еды в доме меньше? Это не бесконечный ресурс, сначала надо проверить наличие
+        #  и только потом уменьшать запас еды и увеличивать сытость
         print(self.name, ' поел')
 
     def go_to_work(self):
@@ -35,7 +37,7 @@ class Human:
 
 
 class Home:
-    fridge = 50
+    fridge = 50  # TODO лучше назвать "еда", ведь холодильник не едят
     money = 0
 
     def info(self):

@@ -1,5 +1,5 @@
 import copy
-class Cell:
+class Cell:  # TODO Определение класса должно отделяться от остального кода двумя пустыми строками
     busy = 0
     item = ''
 
@@ -8,9 +8,9 @@ class Cell:
 
 
 class Board:
-
-    clear_field = [Cell(i_number) for i_number in range(9)]
-    field = copy.deepcopy(clear_field)
+    # TODO поместите эти две строки в метод __init__
+    clear_field = [Cell(i_number) for i_number in range(9)]  # TODO укажите атрибуту префикс self.
+    field = copy.deepcopy(clear_field)  # TODO Аналогично предыдущему
     # def clear(self):
     #     self.field = [Cell(i_number) for i_number in range(9)]
     def info(self):
@@ -45,7 +45,9 @@ class Player:
 
 
 class Game:
-    def main(self, total_points, player_1, player_2, board):  #TODO предлагает сделать метод 'static' потому что не используется self, но для чего это нужно? и что это значит?
+    def main(self, total_points, player_1, player_2, board):  # предлагает сделать метод 'static' потому что не используется self, но для чего это нужно? и что это значит?
+        # TODO Методы бывают статическими (доп. материал: https://timeweb.cloud/tutorials/python/staticheskij-metod-python)
+        #  и PyCharm так настроен, чтобы предупреждать об этом. Можно не обращать внимания
 
         answer = input('Хотите начать новую игру? (1)\n'
                        'Или продолжить турнир? (2)\n'
@@ -58,7 +60,9 @@ class Game:
         print(player_1.name, ' - ', total_points[player_1.name])
         print(player_2.name, ' - ', total_points[player_2.name])
 
-        board = Board() # TODO Не пойму почему не очищает поле
+        board = Board() #  Не пойму почему не очищает поле
+        # TODO подсказал как сделать выше. А не "очищает" поле потому, что у вас получились атрибуты класса, а они
+        #  постоянны для всех объектов (экземпляров) класса
         turn = player_1
         board.info()
         for i_turn in range(9):
