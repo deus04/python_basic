@@ -1,13 +1,11 @@
 import copy
+
+
 class Matrix:
-    data = []   # возожно тут нужно создавать пустой шаблон матрицы х на у,
-                # но непойму можно ли создать параметр data в __init_
-    # TODO просто удалите инициализацию data тут...
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        # data = [[0 for i_elem in range(x)] for j_elem in range(y)]
-        # TODO ...иницализируйте self.data тут
+        self.data = [[0 for i_elem in range(x)] for j_elem in range(y)]
 
     def add(self, m2):
         copy_matrix = copy.deepcopy(self.data)
@@ -23,10 +21,9 @@ class Matrix:
                 copy_matrix[copy_matrix.index(i_row)][i_row.index(i_item)] -= m2.data[copy_matrix.index(i_row)][i_row.index(i_item)]
         return copy_matrix
 
-    def multiply(self,m3):
+    def multiply(self, m3):
         mult_matrix = Matrix(self.x, m3.y)
         for i_elem in range(self.x):
-            mult_matrix.data.append(list(range(m3.y)))
             for j_elem in range(m3.y):
                 mult_matrix.data[i_elem][j_elem] = self.data[i_elem][0] * m3.data[0][j_elem] + self.data[i_elem][1] * m3.data[1][j_elem] + self.data[i_elem][2] * m3.data[2][j_elem]
         return mult_matrix.data
@@ -41,9 +38,6 @@ class Matrix:
 
 
 # Примеры работы с классом:
-
-
-
 # Создание экземпляров класса Matrix
 m1 = Matrix(2, 3)
 m1.data = [[1, 2, 3],

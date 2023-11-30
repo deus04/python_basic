@@ -2,18 +2,15 @@ class Water:
     name = 'Water'
 
     def __add__(self, other):
-        if other.name == 'Air':
-            # TODO Для определения принадлежности объекта классу используйте isinstance, это единственный надежный способ
-            return Storm.name  # TODO возвращать надо объект полученного элемента
-        elif other.name == 'Fire':
-            return Steam.name
-        elif other.name == 'Earth':
-            return Mud.name
+        if isinstance(other, Air):
+            return storm
+        elif isinstance(other, Fire):
+            return steam
+        elif isinstance(other, Earth):
+            return mud
         else:
             return None
 
-    # TODO добавьте такой метод в каждый класс, тогда в print имя элемента будет выводиться "автоматически", без прямого
-    #  доступа к атрибуту name
     def __str__(self):
         return self.name
 
@@ -22,42 +19,51 @@ class Air:
     name = 'Air'
 
     def __add__(self, other):
-        if other.name == 'Water':
-            return Storm.name
-        elif other.name == 'Fire':
-            return Lightning.name
-        elif other.name == 'Earth':
-            return Dust.name
+        if isinstance(other, Water):
+            return storm
+        elif isinstance(other, Fire):
+            return lightning
+        elif isinstance(other, Earth):
+            return dust
         else:
             return None
+
+    def __str__(self):
+        return self.name
 
 
 class Fire:
     name = 'Fire'
 
     def __add__(self, other):
-        if other.name == 'Fire':
-            return Steam.name
-        elif other.name == 'Air':
-            return Lightning.name
-        if other.name == 'Earth':
-            return Lava.name
+        if isinstance(other, Fire):
+            return steam
+        elif isinstance(other, Air):
+            return lightning
+        if isinstance(other, Earth):
+            return lava
         else:
             return None
+
+    def __str__(self):
+        return self.name
 
 
 class Earth:
     name = 'Earth'
 
     def __add__(self, other):
-        if other.name == 'Water':
-            return Mud.name
-        elif other.name == 'Air':
-            return Dust.name
-        if other.name == 'Fire':
-            return Lava.name
+        if isinstance(other, Water):
+            return mud
+        elif isinstance(other, Air):
+            return dust
+        if isinstance(other, Fire):
+            return lava
         else:
             return None
+
+    def __str__(self):
+        return self.name
 
 
 class Storm:
@@ -66,12 +72,18 @@ class Storm:
     def __add__(self, other):
         return None
 
+    def __str__(self):
+        return self.name
+
 
 class Steam:
     name = 'Steam'
 
     def __add__(self, other):
         return None
+
+    def __str__(self):
+        return self.name
 
 
 class Mud:
@@ -80,12 +92,18 @@ class Mud:
     def __add__(self, other):
         return None
 
+    def __str__(self):
+        return self.name
+
 
 class Lightning:
     name = 'Lightning'
 
     def __add__(self, other):
         return None
+
+    def __str__(self):
+        return self.name
 
 
 class Dust:
@@ -94,6 +112,9 @@ class Dust:
     def __add__(self, other):
         return None
 
+    def __str__(self):
+        return self.name
+
 
 class Lava:
     name = 'Lava'
@@ -101,13 +122,21 @@ class Lava:
     def __add__(self, other):
         return None
 
+    def __str__(self):
+        return self.name
+
 
 water = Water()
 air = Air()
 fire = Fire()
 earth = Earth()
+
 dust = Dust()
 lava = Lava()
+storm = Storm()
+steam = Steam()
+mud = Mud()
+lightning = Lightning()
 
 print(water + air)
 print(water + fire)
