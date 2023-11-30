@@ -12,6 +12,7 @@ class Matrix:
         for i_row in copy_matrix:
             for i_item in i_row:
                 copy_matrix[copy_matrix.index(i_row)][i_row.index(i_item)] += m2.data[copy_matrix.index(i_row)][i_row.index(i_item)]
+                # TODO превышение ограничения на длину строки кода в 120 символов - разбейте строку на две части
         return copy_matrix
 
     def subtract(self, m2):
