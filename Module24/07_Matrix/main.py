@@ -11,22 +11,26 @@ class Matrix:
         copy_matrix = copy.deepcopy(self.data)
         for i_row in copy_matrix:
             for i_item in i_row:
-                copy_matrix[copy_matrix.index(i_row)][i_row.index(i_item)] += m2.data[copy_matrix.index(i_row)][i_row.index(i_item)]
-                # TODO превышение ограничения на длину строки кода в 120 символов - разбейте строку на две части
+                copy_matrix[copy_matrix.index(i_row)][i_row.index(i_item)] += \
+                    m2.data[copy_matrix.index(i_row)][i_row.index(i_item)]
         return copy_matrix
 
     def subtract(self, m2):
         copy_matrix = copy.deepcopy(self.data)
         for i_row in copy_matrix:
             for i_item in i_row:
-                copy_matrix[copy_matrix.index(i_row)][i_row.index(i_item)] -= m2.data[copy_matrix.index(i_row)][i_row.index(i_item)]
+                copy_matrix[copy_matrix.index(i_row)][i_row.index(i_item)] -= \
+                    m2.data[copy_matrix.index(i_row)][i_row.index(i_item)]
         return copy_matrix
 
     def multiply(self, m3):
         mult_matrix = Matrix(self.x, m3.y)
         for i_elem in range(self.x):
             for j_elem in range(m3.y):
-                mult_matrix.data[i_elem][j_elem] = self.data[i_elem][0] * m3.data[0][j_elem] + self.data[i_elem][1] * m3.data[1][j_elem] + self.data[i_elem][2] * m3.data[2][j_elem]
+                mult_matrix.data[i_elem][j_elem] = \
+                    self.data[i_elem][0] * m3.data[0][j_elem] + \
+                    self.data[i_elem][1] * m3.data[1][j_elem] + \
+                    self.data[i_elem][2] * m3.data[2][j_elem]
         return mult_matrix.data
 
     def transpose(self):
