@@ -1,11 +1,8 @@
 class Property:
     tax = 1
-    #  правильно ли будет определить переменную tax = 1, при условии что мы ее меняем в потомках?
-    #  как будто было бы правильно ее прописать в родителе
-    # TODO Вполне возможно, переопределение части атрибутов и методов это в правилах ООП
+
     def __init__(self, worth):
         self.worth = worth
-    pass  # TODO эта строка лишняя, pass ставят вместо реализации метода/функции/класса, если она не нужна или отложена "на потом"
 
     def tax_calculation(self):
         total_price = self.worth * self.tax
@@ -14,17 +11,14 @@ class Property:
 
 class Apartment(Property):
     tax = 1/1000
-    pass  # TODO Аналогично предыдущему
 
 
 class Car(Property):
     tax = 1 / 200
-    pass
 
 
 class CountryHouse(Property):
     tax = 1 / 500
-    pass
 
 
 money = int(input('Сколько денег у вас есть?\n'))
