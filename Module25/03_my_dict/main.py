@@ -3,7 +3,8 @@ class MyDict(dict):
 
     def get(self, key):
         result = 0
-        for i_key, i_value in self.items():
+        for i_key, i_value in self.items():  # TODO просто получите нужное с помощью метода get или по имени ключа
+                                             #  (предварительно надо проверить наличие ключа в словаре оператором in)
             if key == i_key:
                 result = i_value
         return result
