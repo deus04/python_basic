@@ -10,6 +10,7 @@ output_file_path = os.path.abspath(os.path.join('data',  'output_file.txt'))
 # Не забудьте проверить наличие файлов перед тем как начать работу с ними
 # https://docs-python.ru/standart-library/modul-os-path-python/funktsija-exists-modulja-os-path/
 def error_log_generator(input_file_path):
+    # TODO сначала надо убедиться что файл есть, например с помощью os.path.isfile
     with open(input_file_path, 'r') as file:
         for i_line in file:
             if i_line.startswith('ERROR: '):
