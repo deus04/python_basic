@@ -7,6 +7,8 @@ class SquarerIter:
     def __iter__(self):
         # TODO чтобы объект итератора можно было использовать несколько раз, надо вернуть к исходным значения
         #  изменяющихся в процессе работы атрибутов
+        self.stop_number = stop_number
+        self.start_number = 0
         return self
 
     def __next__(self):
