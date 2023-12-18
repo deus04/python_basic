@@ -93,7 +93,25 @@ class LinkedList:
             # print('node:', node.data)
             # print('node_next:', node.next)
             # print('----------')
-
+    # TODO вариант на одном цикле:
+    #  def remove(self, index: int) -> None:
+    #         if index > self.__length or index < 0:
+    #             return None
+    #
+    #         curr = self.__head
+    #         prev = None
+    #         idx = 0
+    #         while curr is not None:
+    #             if index == idx:
+    #                 self.__length -= 1
+    #                 if prev is None:
+    #                     self.__head = curr.next_
+    #                 else:
+    #                     prev.next_ = curr.next_
+    #
+    #             idx += 1
+    #             prev = curr
+    #             curr = curr.next_
 
 # node_1 = Node(5)
 # print(node_1)
