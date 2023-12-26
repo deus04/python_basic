@@ -1,5 +1,4 @@
-# TODO Видимо задание не вполне было ясно. Нужно создать два класса Узел и Связанный список, и реализовать основные
-#  методы для работы с ними:
+
 #
 #
 # Класс Узел (Node)
@@ -42,7 +41,7 @@ class LinkedList:
         result = str()
         while node.next:
             node = node.next
-            result = result + str(node) + ' '  #TODO можно и лучше, но пока так
+            result = result + str(node) + ' '
         return result
 
     def append(self, data):
@@ -56,7 +55,7 @@ class LinkedList:
     def get(self, number):
         node = self.root_node
         for count in range(number):
-            node = node.next                #TODO оставил коменты для проверки. Не уверен что все построил правильно
+            node = node.next
             # print('--------')
             # print(node.data)
             # print(node.next)
