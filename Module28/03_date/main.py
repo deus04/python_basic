@@ -1,4 +1,5 @@
 class Date:
+    # TODO сделайте методы методами класса
     def from_string(string):
         splited_str = string.split('-')
         date = 'День: {}        Месяц: {}       Год: {}'\
@@ -8,6 +9,7 @@ class Date:
     def is_date_valid(string):
         splited_str = string.split('-')
         if (0 < int(splited_str[0]) <= 31) and (0 < int(splited_str[1]) <= 12) and (0 < int(splited_str[2])):
+            # TODO просто верните результат сравнения
             return True
         else:
             return False

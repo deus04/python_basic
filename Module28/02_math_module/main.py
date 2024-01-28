@@ -2,10 +2,12 @@ import math
 
 
 class MyMath:
+    # TODO забыли указать декоратор @classmethod для каждого метода
     def circle_len(radius):
-        L = 2 * radius * math.pi
+        L = 2 * radius * math.pi  # TODO имена переменных пишутся исключительно строчными буквам (см. РЕР 8)
         return L
 
+    # TODO Аналогично предыдущему для всего остального кода класса
     def circle_sq(radius):
         S = math.pi * radius**2
         return S
