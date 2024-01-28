@@ -2,23 +2,25 @@ import math
 
 
 class MyMath:
-    # TODO забыли указать декоратор @classmethod для каждого метода
-    def circle_len(radius):
-        L = 2 * radius * math.pi  # TODO имена переменных пишутся исключительно строчными буквам (см. РЕР 8)
-        return L
+    @classmethod
+    def circle_len(cls, radius):
+        l = 2 * radius * math.pi
+        return l
 
-    # TODO Аналогично предыдущему для всего остального кода класса
-    def circle_sq(radius):
-        S = math.pi * radius**2
-        return S
+    @classmethod
+    def circle_sq(cls, radius):
+        s = math.pi * radius**2
+        return s
 
-    def volume_cube(side):
-        V = side**3
-        return V
+    @classmethod
+    def volume_cube(cls, side):
+        v = side**3
+        return v
 
-    def surface_area_sphere(radius):
-        S = 4 * math.pi * radius**2
-        return S
+    @classmethod
+    def surface_area_sphere(cls, radius):
+        s = 4 * math.pi * radius**2
+        return s
 
 
 res_1 = MyMath.circle_len(radius=5)

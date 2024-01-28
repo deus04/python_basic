@@ -1,18 +1,19 @@
 class Date:
-    # TODO сделайте методы методами класса
-    def from_string(string):
+    @classmethod
+    def from_string(cls, string):
         splited_str = string.split('-')
         date = 'День: {}        Месяц: {}       Год: {}'\
             .format(splited_str[0], splited_str[1], splited_str[2])
         return date
 
-    def is_date_valid(string):
+    @classmethod
+    def is_date_valid(cls, string):
         splited_str = string.split('-')
         if (0 < int(splited_str[0]) <= 31) and (0 < int(splited_str[1]) <= 12) and (0 < int(splited_str[2])):
             # TODO просто верните результат сравнения
+            #  почему? в задании результат True or False
             return True
-        else:
-            return False
+        return False
 
 
 date = Date.from_string('10-12-2077')
