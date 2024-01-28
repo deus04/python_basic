@@ -1,4 +1,20 @@
-# TODO здесь писать код
+class LRUCache:
+
+    def __init__(self, capacity: int) -> None:
+        self.capacity = capacity
+        self._cache = dict()
+
+    def print_cache(self) -> None:
+        print(self._cache)
+
+    @cache.setter               # TODO не могу понять почему он не видит имя "cache".
+                                #  Скорее всего не верно объявляю в __init__
+    def cache(self, key: str, value: str) -> None:
+        self._cache[key] = value
+
+    @property
+    def get(self, key):
+        return self._cache[key]
 
 
 
