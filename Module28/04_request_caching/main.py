@@ -2,7 +2,7 @@ class LRUCache:
 
     def __init__(self, capacity: int) -> None:
         self.capacity = capacity
-        self.__cache = dict()  # по классике этот атрибут делаем приватным, то есть с префиксом из двойного подчеркивания
+        self.__cache = dict()
         self.cache_list = list()
 
     def print_cache(self) -> None:
@@ -10,15 +10,10 @@ class LRUCache:
 
     @property
     def cache(self, key: str) -> None:
-        return self.__cache[key]    #  сеттер заработал, но что тогда в проперти нужно возвращать?
-                                    # TODO Свойство (не стоит писать транслитом) обычно возвращает значение атрибута,
-                                    #  причем свойство не должно иметь параметров. В нашем случае надо возвращать самый
-                                    #  "старый" элемент, то есть помещённый в кэш раньше остальных
+        return self.__cache[key]
 
-    @cache.setter               #  не могу понять почему он не видит имя "cache".
-                                #  Скорее всего не верно объявляю в __init__
-                                # определите свойство до сеттера и всё получится
-    def cache(self, key_value) -> None:  # на самом деле нам нужен метод который принимает один параметр в виде кортежа из ключа и значения
+    @cache.setter
+    def cache(self, key_value) -> None:
         key, value = key_value
         if key in self.cache_list:
             self.cache_list.remove(key)
@@ -27,16 +22,10 @@ class LRUCache:
         if len(self.__cache) > self.capacity:
             oldest_key = self.cache_list[0]
             self.cache_list.remove(oldest_key)
-            self.__cache.pop(oldest_key)  #  нужно придумать как удалить самый старый
-                                          #  возможно не самый эффективынй способ нахождения нужного ключа
-      # TODO Однако получился достаточно лаконичный алгоритм. Конечно вариантов реализации может быть
-      #  много, зависит от фантазии. Предлагаю к ознакомлению вариант решения в файле example.py Возможно он натолкнёт
-      #  вас на другое, более оптимальное решение
+            self.__cache.pop(oldest_key)
 
     def get(self, key: str) -> None:
         return self.__cache[key]
-
-
 
 
 # Создаем экземпляр класса LRU Cache с capacity = 3
