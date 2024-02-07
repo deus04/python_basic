@@ -1,17 +1,67 @@
-from datetime import datetime
+import datetime
 import functools
+import time
 
 
-def log_methods(cls):
-    @functools.wraps(cls)
+
+#
+#
+# def log_methods(decorator):
+#     @functools.wraps(decorator)
+#     def decorate(cls):
+#         for i_method_name in dir(cls):
+#             if i_method_name.startswith('__') is False:
+#                 cur_method = getattr(cls, i_method_name)
+#                 decorated_method = decorator(cur_method)
+#                 setattr(cls, i_method_name, decorated_method)
+#             return cls
+#         return decorate
+#
+#
+# def create_time(cls):
+#     @functools.wraps(cls)
+#     def wrapper(*args, **kwargs):
+#         instance = cls(*args, **kwargs)
+#         print("Время создания:", datetime.datetime.utcnow())
+#         return instance
+#     return wrapper
+#
+#
+def timer(func):
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        print('- Запускается {}. Дата и время запуска: {}'.format(cls.__name__, datetime.utcnow()))
-        result = cls(*args, **kwargs)
+        start_time = datetime.datetime.now().strformat()
+        print("-Запускается '{}'. Дата и время запуска: {}".format(func.__name__, start_time))
+        #TODO в print нужно както достать имя класса cls.__name__ чтобы был верный вывод
+        # cls у меня есть только в декораторе класса decorate(cls)
+        # но если замерять время там, то он показывает именно время инициации и вывод тогда неверный
+        # в общем, не понимаю структуру декораторов. Первые 2 задания сделал легко, а вот тут не могу понять
+        # кто во что входит и как обернуть правильно
+        result = func(*args, **kwargs)
+        end_time = datetime.datetime.now() - start_time
+        formated_time = end_time
+        print("-Завершение '{}'. Время работы: {}".format(func.__name__, end_time))
         return result
-    return wrapper
+    return wrapper #Нужно перенести таймер из декоратора класса вот сюда
 
 
-@log_methods
+def for_all_methods(decorator):
+    @functools.wraps(decorator)
+    def decorate(cls):
+        for i_method in dir(cls):
+            if not i_method.startswith('__'):
+                # start_time = datetime.now()
+                # print("-Запускается '{}.{}'. Дата и время запуска: {}".format(cls.__name__, i_method, start_time))
+                cur_method = getattr(cls, i_method)
+                decorated_method = decorator(cur_method)
+                setattr(cls, i_method, decorated_method)
+                # end_time = start_time - datetime.now()
+                # print("-Завершение '{}.{}'. Время работы: {}".format(cls.__name__, i_method, end_time))
+        return cls
+    return decorate
+
+
+@for_all_methods(timer)
 class A:
     def test_sum_1(self):
         print('test sum 1')
@@ -23,7 +73,7 @@ class A:
         return result
 
 
-@log_methods
+@for_all_methods(timer)
 class B(A):
     def test_sum_1(self):
         super().test_sum_1()
@@ -43,4 +93,4 @@ my_obj = B()
 my_obj.test_sum_1()
 my_obj.test_sum_2()
 
-#TODO почемуто выдает ошибку TypeError: function() argument 'code' must be code, not str
+# TODO
