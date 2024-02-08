@@ -27,16 +27,18 @@ import time
 #     return wrapper
 #
 #
-def timer(func):
+def timer(func):  # TODO  добавьте ещё два параметра - для шаблона даты-времени и для класса (см. ниже комментарий тоже)
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        start_time = datetime.datetime.now().strformat()
+        start_time = datetime.datetime.now().strformat()  # TODO для получения "форматированной" даты-времени,
+                                                          #  используйте метод strftime и укажите ему строку-формат даты-времени
         print("-Запускается '{}'. Дата и время запуска: {}".format(func.__name__, start_time))
-        #TODO в print нужно както достать имя класса cls.__name__ чтобы был верный вывод
+        # в print нужно както достать имя класса cls.__name__ чтобы был верный вывод
         # cls у меня есть только в декораторе класса decorate(cls)
         # но если замерять время там, то он показывает именно время инициации и вывод тогда неверный
         # в общем, не понимаю структуру декораторов. Первые 2 задания сделал легко, а вот тут не могу понять
         # кто во что входит и как обернуть правильно
+        # TODO подсказал выше и ниже
         result = func(*args, **kwargs)
         end_time = datetime.datetime.now() - start_time
         formated_time = end_time
@@ -45,7 +47,7 @@ def timer(func):
     return wrapper #Нужно перенести таймер из декоратора класса вот сюда
 
 
-def for_all_methods(decorator):
+def for_all_methods(decorator):  # TODO тут через параметр принимаем строку с форматом даты-времени (см. ниже комментарий)
     @functools.wraps(decorator)
     def decorate(cls):
         for i_method in dir(cls):
@@ -53,7 +55,9 @@ def for_all_methods(decorator):
                 # start_time = datetime.now()
                 # print("-Запускается '{}.{}'. Дата и время запуска: {}".format(cls.__name__, i_method, start_time))
                 cur_method = getattr(cls, i_method)
-                decorated_method = decorator(cur_method)
+                decorated_method = decorator(cur_method)  # TODO 1) вызываем напрямую timer вместо decorator
+                                                          #  2) добавьте ещё два параметра - для шаблона даты-времени и
+                                                          #  для класса (или имени класса) - понадобится при выводе в консоль сообщений
                 setattr(cls, i_method, decorated_method)
                 # end_time = start_time - datetime.now()
                 # print("-Завершение '{}.{}'. Время работы: {}".format(cls.__name__, i_method, end_time))
@@ -61,7 +65,7 @@ def for_all_methods(decorator):
     return decorate
 
 
-@for_all_methods(timer)
+@for_all_methods(timer)  # TODO в качестве параметра передаём формат даты-времени (см. шаблон решения в задании)
 class A:
     def test_sum_1(self):
         print('test sum 1')
@@ -73,7 +77,7 @@ class A:
         return result
 
 
-@for_all_methods(timer)
+@for_all_methods(timer)  # TODO Аналогично предыдущему
 class B(A):
     def test_sum_1(self):
         super().test_sum_1()
