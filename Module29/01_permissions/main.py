@@ -1,9 +1,8 @@
-def check_permission(user_permissions):  # TODO параметр получает имя пользователя, назовите его username
+def check_permission(user_name):
     def decorator(func):
         def wrapper(*args, **kwargs):
             try:
-                if user_permissions == 'admin':  # TODO Проверить надо наличие username в списке "доверенных лиц",
-                                                 #  то есть в cписке присвоемнном глобальной переменной user_permissions
+                if user_name in user_permissions:
                     result = func(*args, **kwargs)
                     return result
                 else:
