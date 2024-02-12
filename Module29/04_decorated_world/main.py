@@ -10,8 +10,7 @@ def decorator_with_args_for_any_decorator(decorator):
     return wrapper_decorator
 
 
-
-@decorator_with_args_for_any_decorator  # TODO больше двух пустых строк не допускается (см. выше, там их три)
+@decorator_with_args_for_any_decorator
 def decorated_decorator(func, *args, **kwargs):
     def wrapper_function(*args, **kwargs):
         return func(*args, **kwargs)

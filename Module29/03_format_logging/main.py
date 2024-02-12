@@ -11,8 +11,8 @@ def timer(cls, func, date_format):
                 format = format.replace(sym, '%' + sym)
 
         start_time = time.time()
-        print("-Запускается '{}.{}' Дата и время запуска: {}".format(cls.__name__, func.__name__, datetime.datetime.now().strftime(format)))
-        # TODO превышение ограничения на длину строки кода в 120 символов - разбейте строку на две части
+        print("-Запускается '{}.{}' Дата и время запуска: {}".format(cls.__name__, func.__name__,
+                                                                     datetime.datetime.now().strftime(format)))
         result = func(*args, **kwargs)
         end_time = round(time.time() - start_time, 3)
         print("-Завершение '{}.{}' Время работы: {}s".format(cls.__name__, func.__name__, end_time))
