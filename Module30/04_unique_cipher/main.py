@@ -1,4 +1,10 @@
-# TODO здесь писать код
+from collections import Counter
+
+
+def count_unique_characters(string):
+    lower_string = string.lower()
+    return sum(list(filter(lambda i_value: i_value == 1, Counter(lower_string).values())))
+
 
 
 # Пример использования:
