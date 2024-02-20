@@ -11,6 +11,28 @@ def list_or_dict(dict_1, dict_2, diff_list):
     return dict_of_difs
 
 
+def found_key(selected_elem, search_key):
+    if search_key in selected_elem:
+        print('поиск..', selected_elem[search_key])
+        return selected_elem[search_key]
+    else:
+        if isinstance(selected_elem, list):
+            print('!!!!!!!!!!!!!!') #TODO почемуто не заходит сюда
+            for i_elem in selected_elem:
+                result = found_key(i_elem, search_key)
+                if result:
+                    break
+        else:
+            for i_value in selected_elem.values():
+                if isinstance(i_value, dict):
+                    result = found_key(i_value, search_key)
+                    if result:
+                        break
+            else:
+                result = None
+    return result
+
+
 with open('json_old.json', 'r', encoding='utf-8') as file:
     file_old = json.load(file)
 
@@ -19,20 +41,33 @@ with open('json_new.json', 'r', encoding='utf-8') as file:
 
 dict_of_difs = dict()
 
-diff_list = ["cost_per_unit", "staff", "datetime"]  # TODO указал ключ записи словаря вложенного в список, ваш алгоритм
+diff_list = ["cost_per_unit", "staff", "datetime"]  #  указал ключ записи словаря вложенного в список, ваш алгоритм
                                                     #  такие словари просто не "обходит" (не проверяет)
-# TODO В модуле 21 мы делали рекурсивный поиск ключа сложной вложенной структуры (задача 2), используйте её для решения
+#  В модуле 21 мы делали рекурсивный поиск ключа сложной вложенной структуры (задача 2), используйте её для решения
 #  данной задачи. Только, чтобы решение было общим (для любых вложенных структур) в неё ещё надо добавить обход
 #  вложенных списков.
-# TODO Предлагаю такой алгоритм программы (псевдокодом):
+#  Предлагаю такой алгоритм программы (псевдокодом):
 # 1. читаем оба файла со словарями, преобразуем в словари и присваиваем двум переменным "старый_словарь" и "новый_словарь"
 # 2. итерируя по списку ключей выполняем:
 #     - находим значение по текущему ключу в старом словаре
 #     - находим значение по текущему ключу в новом словаре
 #     - если значения разные - создаем в словаре "результата" запись из вида "текущий ключ": "значение в новом словаре"
 # 3. Записываем в файл словарь
-result = list_or_dict(file_old, file_new, diff_list)
+for i_elem in diff_list:
+    first_dict_diff = found_key(file_old, i_elem)
+    print(i_elem, 'в первом ', first_dict_diff)
+    second_dict_diff = found_key(file_new, i_elem)
+    print(i_elem, 'во втором', second_dict_diff)
+    if first_dict_diff != second_dict_diff:
+        dict_of_difs[i_elem] = found_key(file_new,i_elem)
+    print('-'*20)
+
+result = dict_of_difs
 print(result)
 
 with open('result.json', 'w', encoding='utf-8') as file:
     json.dump(result, file, indent=4)  # TODO только title в итоговом файле чтото поехал(
+
+
+
+#{'services': [{'id': 22222225, 'title': 'Ð¡ÑÑÐ¸Ð¶ÐºÐ°', 'cost': 1500, 'cost_per_unit': 1500, 'first_cost': 1500, 'amount': 1}], 'datetime': '2022-01-25T13:00:00+03:00'}
