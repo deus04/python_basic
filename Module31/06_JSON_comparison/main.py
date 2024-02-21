@@ -6,26 +6,16 @@ def found_key(selected_elem, search_key):
         return selected_elem[search_key]
     else:
         if isinstance(selected_elem, dict):
-            for i_value in selected_elem.values():
-                if isinstance(i_value, dict) or isinstance(i_value, list):  # TODO меня смущает эта повторяющаяся часть
-                    result = found_key(i_value, search_key)                 #  }
-                    if result:                                              #  }
-                        break                                               #  }
+            inc_collection = selected_elem.values()
         elif isinstance(selected_elem, list):
-            for i_value in selected_elem:
-                if isinstance(i_value, dict) or isinstance(i_value, list):  #  }
-                    result = found_key(i_value, search_key)                 #  }
-                    if result:                                              #  }
-                        break                                               #  }
+            inc_collection = selected_elem
+        for i_value in inc_collection:  # TODO подсвечивает потому что он не всегда не нее выходит?
+            if isinstance(i_value, (dict, list)):
+                result = found_key(i_value, search_key)
+                if result:
+                    break
         else:
             result = None
-        # TODO С другой стороны за то выглядит ясно и достаточно просто :)
-        #  Но код можно упростить:
-        #  1) по сути, дублируется цикл итерирования по некой коллекции, для коллекции надо ввести переменую и
-        #  присвоить ей либо список занчений словаря либо исходное значение selected_elem. После этого уже одним циклом
-        #  итерируем по выбранной коллекции
-        #  2) функция isinstance может сравнивать объект с кортежем типов, поэтому и сравнение можно упростить
-        # нужен условный оператор с двумя ветками - для словарей и списков, в каждом по циклу итерирующему по ним
     return result
 
 
