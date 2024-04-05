@@ -7,12 +7,10 @@ def found_key(selected_elem, search_key):
     else:
         if isinstance(selected_elem, dict):
             inc_collection = selected_elem.values()
-        elif isinstance(selected_elem, list):
+        else:
             inc_collection = selected_elem
-        for i_value in inc_collection:  #  подсвечивает потому что он не всегда не нее выходит?
-                                        # TODO потому что переменная может быть не определена если ни одно из сравнений
-                                        #  выше не будет истинно. Но можно заменить elif выше на else, ведь функция
-                                        #  вызывается только для списков или словарей
+
+        for i_value in inc_collection:
             if isinstance(i_value, (dict, list)):
                 result = found_key(i_value, search_key)
                 if result:
